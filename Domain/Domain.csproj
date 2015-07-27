@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F489C45A-0C2A-401A-AD4A-1C72112EE96D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>MY.PROJECT.NAME.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>debug\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>C:\@Geeks.Coder\@Assemblies\@FxCop.Rules\@Geeks.RuleSet.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>debug\bin\MY.PROJECT.NAME.Domain.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MSharp.Framework, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b8f6365a003d114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MSharp.Framework.2.1.0.248\lib\net45\MSharp.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Compile Include="Entities\Administrator.cs" />
+    <Compile Include="Entities\ApplicationEvent.cs" />
+    <Compile Include="Entities\ContentBlock.cs" />
+    <Compile Include="Entities\EmailQueueItem.cs" />
+    <Compile Include="Entities\EmailTemplate.cs" />
+    <Compile Include="Entities\PasswordResetTicket.cs" />
+    <Compile Include="Entities\Settings.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Properties\Assembly.cs" />
+    <Compile Include="DAL\@AdoDotNetDataProviderFactory.cs" />
+    <Compile Include="DAL\AdministratorDataProvider.cs" />
+    <Compile Include="DAL\ApplicationEventDataProvider.cs" />
+    <Compile Include="DAL\ContentBlockDataProvider.cs" />
+    <Compile Include="DAL\EmailQueueItemDataProvider.cs" />
+    <Compile Include="DAL\EmailTemplateDataProvider.cs" />
+    <Compile Include="DAL\PasswordResetTicketDataProvider.cs" />
+    <Compile Include="DAL\SettingsDataProvider.cs" />
+    <Compile Include="DAL\UserDataProvider.cs" />
+    <Compile Include="-Logic\Administrator.cs" />
+    <Compile Include="-Logic\EmailTemplate.cs" />
+    <Compile Include="-Logic\Settings.cs" />
+    <Compile Include="-Logic\User.cs" />
+    <Compile Include="-Logic\Context\AnonymousUser.cs" />
+    <Compile Include="-Logic\Services\PasswordResetService.cs" />
+    <Compile Include="-Logic\Utilities\Extensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

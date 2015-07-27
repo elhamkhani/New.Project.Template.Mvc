@@ -1,0 +1,67 @@
+var v105 =
+{
+    Name: "Admin settings menu",
+    RootCssClass: "navbar navbar-default",
+    GenerateLinks: true,
+    IsInUse: true,
+    IsViewComponent: true,
+    Orientation: "Vertical",
+    UlCssClass: "nav nav-stacked",
+    
+    Items:
+    [
+        /* ---------------------- General settings ------------------------------------------ */
+        {
+            Text: "General settings",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go General settings.......................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go General settings",
+                        Page: "Admin > Settings > General",
+                        Target: "Same window",
+                    },
+                ],
+            },
+        },
+        
+        /* ---------------------- Administrators -------------------------------------------- */
+        {
+            Text: "Administrators",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go Administrators............................ */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go Administrators",
+                        Page: "Admin > Settings > Administrators",
+                        Target: "Same window",
+                    },
+                ],
+            },
+        },
+        
+        /* ---------------------- Email templates ------------------------------------------- */
+        {
+            Text: "Email templates",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go Email templates........................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go Email templates",
+                        Page: "Admin > Settings > Email templates",
+                        Target: "Same window",
+                    },
+                ],
+            },
+        },
+    ],
+}

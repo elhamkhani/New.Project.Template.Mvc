@@ -1,0 +1,33 @@
+var v105 =
+{
+    Name: "Dispatch",
+    Parent: "Login",
+    MasterPage: "Front end",
+    
+    StartupWorkflows:
+    {
+        Do:
+        [
+            
+            /* Go Admin..................................... */
+            {
+                Type: "NavigateActivity",
+                Description: "Go Admin",
+                Page: "Admin",
+                Target: "Same window",
+                MustRunOnServer: true,
+                Criteria:
+                {
+                    Roles: "Administrator",
+                },
+            },
+            
+            /* Show start up message!....................... */
+            {
+                Type: "GenericActivity",
+                Description: "Show start up message!",
+                Code: "throw new Exception(\"Add your redirect logic here and then delete this activity!\");",
+            },
+        ],
+    },
+}

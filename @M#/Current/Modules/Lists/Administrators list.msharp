@@ -1,0 +1,248 @@
+var v105 =
+{
+    Name: "Administrators list",
+    Entity: "Administrator",
+    RenderMode: "Grid",
+    ModuleHeaderText: "Administrators",
+    ShowHeaderRow: true,
+    Sortable: true,
+    StartUpBehaviour: "Load list",
+    UpdateWithPost: true,
+    WrapListItemTemplate: true,
+    
+    /* ================================= Elements ================================= */
+    Elements:
+    [
+        /* -------------------------- [[ [Administrators list].Name ]] ------------ */
+        {
+            Type: "ListButton",
+            Name: "Name",
+            Text: "c#:item.Name",
+            CausesValidation: true,
+            DisplayMode: "Default",
+            LabelText: "Name",
+            SortingStatement: "item.Name",
+            SortKey: "Name",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go View {send item}.......................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go View {send item}",
+                        Page: "Admin > Settings > Administrators > View",
+                        Target: "Same window",
+                        SendReturnUrl: true,
+                        
+                        Parameters:
+                        [
+                            {
+                                Key: "item",
+                                Type: "C#",
+                                Value: "item.ID",
+                            },
+                        ],
+                    },
+                ],
+            },
+        },
+        /* -------------------------- [[ Email ]] --------------------------------- */
+        {
+            Type: "ViewElement",
+            Property: "Email",
+            DisplayMode: "Default",
+            IsSortable: true,
+        },
+        /* -------------------------- [[ [Administrators list].ResetPassword ]] --- */
+        {
+            Type: "ListButton",
+            Text: "Reset password",
+            CausesValidation: true,
+            DisplayMode: "Default",
+            LabelText: "Reset password",
+            Style: "Link",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Modal Reset {send item}...................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Modal Reset {send item}",
+                        Page: "Admin > Settings > Administrators > Reset",
+                        Target: "Popup window",
+                        
+                        Parameters:
+                        [
+                            {
+                                Key: "item",
+                                Type: "C#",
+                                Value: "item.ID",
+                            },
+                        ],
+                    },
+                ],
+            },
+        },
+        /* -------------------------- [[ IsDeactivated ]] ------------------------- */
+        {
+            Type: "ViewElement",
+            Property: "IsDeactivated",
+            DisplayMode: "Default",
+            IsSortable: true,
+        },
+        /* -------------------------- [[ [Administrators list].Edit ]] ------------ */
+        {
+            Type: "ListButton",
+            Text: "Edit",
+            CausesValidation: true,
+            DisplayMode: "Default",
+            GridColumnCssClass: "actions",
+            Icon: "fa-edit",
+            LabelText: "Actions",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go Enter..................................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go Enter",
+                        Page: "Admin > Settings > Administrators > Enter",
+                        Target: "Same window",
+                        SendReturnUrl: true,
+                        
+                        Parameters:
+                        [
+                            {
+                                Key: "item",
+                                Type: "C#",
+                                Value: "item.ID",
+                            },
+                        ],
+                    },
+                ],
+            },
+        },
+        /* -------------------------- [[ [Administrators list].Delete ]] ---------- */
+        {
+            Type: "ListButton",
+            Text: "Delete",
+            CausesValidation: true,
+            ConfirmationText: "Are you sure you want to delete this Administrator?",
+            CssClass: "btn-danger",
+            DisplayMode: "Default",
+            GridColumnCssClass: "actions",
+            Icon: "fa-remove",
+            LabelText: "Actions",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Delete item.................................. */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Delete item",
+                        Action: "Delete item",
+                        WarnOnAnyException: true,
+                        WarnOnValidationException: false,
+                    },
+                    
+                    /* Reload....................................... */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Reload",
+                        Action: "Reload",
+                        WarnOnAnyException: false,
+                        WarnOnValidationException: false,
+                    },
+                ],
+            },
+        },
+        /* -------------------------- [[ [Administrators list].Sort ]] ------------ */
+        {
+            Type: "ListButton",
+            Name: "Sort",
+            Text: "[#EMPTY#]",
+            CausesValidation: true,
+            DisplayMode: "Default",
+            GridColumnCssClass: "actions",
+            Icon: "fa-sort fa-2x",
+            LabelText: "Sort",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Drag sort.................................... */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Drag sort",
+                        Action: "Drag sort",
+                        WarnOnAnyException: false,
+                        WarnOnValidationException: false,
+                    },
+                ],
+            },
+        },
+    ],
+    
+    Filters:
+    [
+        
+        /* ---------------------- All fields ------------------------------------------------ */
+        {
+            Type: "CommonFilterElement",
+            Label: "Find:",
+            AfterInput: "[#BUTTONS(Search)#]",
+            Filter: "All fields",
+        },
+    ],
+    
+    /* ================================= Buttons ============================================ */
+    Buttons:
+    [
+        /* ----------------------  << Search >>  -------------------------------------------- */
+        {
+            Text: "Search",
+            CausesValidation: true,
+            Icon: "fa-search",
+            IsSearchButton: true,
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Reload....................................... */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Reload",
+                        Action: "Reload",
+                        WarnOnAnyException: false,
+                        WarnOnValidationException: false,
+                    },
+                ],
+            },
+        },
+        
+        /* ----------------------  << New Administrator >>  --------------------------------- */
+        {
+            Text: "New Administrator",
+            CausesValidation: true,
+            Icon: "fa-plus",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go Enter..................................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go Enter",
+                        Page: "Admin > Settings > Administrators > Enter",
+                        Target: "Same window",
+                        SendReturnUrl: true,
+                    },
+                ],
+            },
+        },
+    ],
+}

@@ -1,0 +1,37 @@
+var v105 =
+{
+    Name: "Administrator",
+    ClassName: "Administrator",
+    TableName: "Administrators",
+    PluralName: "Administrators",
+    Namespace: "03 Users",
+    DatabaseMode: "Managed",
+    BaseType: "User",
+    IsSortable: true,
+    LogEvents: true,
+    Schema: "dbo",
+    SortProperty: "Order",
+    
+    Properties:
+    [
+        /* --------------------------- ImpersonationToken -------------------------------------------------- */
+        {
+            Type: "StringProperty",
+            Name: "ImpersonationToken",
+            Title: "Impersonation token",
+            Capacity: 40,
+            TrimValues: true,
+        },
+        
+        /* --------------------------- Order --------------------------------------------------------------- */
+        {
+            Type: "NumberProperty",
+            Name: "Order",
+            Title: "Order",
+            IsMandatory: true,
+            LowerBound: "0",
+            Scale: 0,
+        },
+        
+    ],
+}

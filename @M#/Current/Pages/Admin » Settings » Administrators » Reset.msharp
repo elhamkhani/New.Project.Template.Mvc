@@ -1,0 +1,18 @@
+var v105 =
+{
+    Name: "Reset",
+    Parent: "Admin > Settings > Administrators",
+    MasterPage: "Front end Modal",
+    
+    /* ================================= Modules ============================================ */
+    Modules:
+    [
+        {
+            Module: "Reset Password Form",
+        },
+    ],
+    
+    StartupWorkflows:
+    {
+    },
+}

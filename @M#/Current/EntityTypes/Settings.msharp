@@ -1,0 +1,36 @@
+var v105 =
+{
+    Name: "Settings",
+    ClassName: "Settings",
+    TableName: "Settings",
+    PluralName: "Settings",
+    Namespace: "04 Other",
+    DatabaseMode: "Managed",
+    GenerateInstanceAccessors: true,
+    LogEvents: true,
+    Schema: "dbo",
+    
+    Properties:
+    [
+        /* --------------------------- Name ---------------------------------------------------------------- */
+        {
+            Type: "StringProperty",
+            Name: "Name",
+            Title: "Name",
+            Capacity: 200,
+            IsMandatory: true,
+            TrimValues: true,
+        },
+        
+        /* --------------------------- PasswordResetTicketExpiryMinutes ------------------------------------ */
+        {
+            Type: "NumberProperty",
+            Name: "PasswordResetTicketExpiryMinutes",
+            Title: "Password reset ticket expiry minutes",
+            IsMandatory: true,
+            LowerBound: "0",
+            Scale: 0,
+        },
+        
+    ],
+}

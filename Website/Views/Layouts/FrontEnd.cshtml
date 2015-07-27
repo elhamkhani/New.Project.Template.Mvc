@@ -1,0 +1,58 @@
+﻿@{var leftMenu = ViewData["LeftMenu"].ToStringOrEmpty(); }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="@FormsAuthentication.Timeout.TotalSeconds + 10">
+    <title>@ViewData["Title"]</title>
+    <link rel="shortcut icon" href="~/public/img/favicon.png" />
+
+
+
+    @if (Context.IsDebuggingEnabled)
+    {
+        <link rel='stylesheet' href='~/Styles/FrontEnd.css' type='text/css' />
+      <!--[if lt IE 11]> <script src='/bower_components/modernizr/modernizr.js'></script> <![endif]-->
+    }
+    else
+    {
+        <link rel='stylesheet' href='/public/css/FrontEnd-min.css' type='text/css' />
+      <!--[if lt IE 11]> <script src='/public/js/modernizr-min.js'></script> <![endif]-->
+    }
+
+
+</head>
+<body>
+
+    <header>
+        @(Html.Action<HeaderController>())
+    </header>
+
+    <div class="container-fluid">
+        <div class="page">
+            @if (leftMenu.HasValue())
+            {
+                <div class="side-bar">
+                    @Html.Action("Index", ViewData["LeftMenu"].ToString())
+                </div>
+            }
+
+            <div class="content @("full".OnlyWhen(leftMenu.IsEmpty()))">
+                @RenderBody()
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        @{Html.RenderAction<Controllers.FooterController>();}
+    </footer>
+
+    @Html.Partial("Common.Scripts")
+    @RenderSection("scripts", required: false)
+    @Html.ResetDatabaseLink()
+    @Html.RegisterStartupActions()
+</body>
+</html>

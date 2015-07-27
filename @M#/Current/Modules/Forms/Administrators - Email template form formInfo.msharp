@@ -1,0 +1,76 @@
+var v105 =
+{
+    Name: "Administrators - Email template form formInfo",
+    Entity: "Administrator",
+    
+    /* ================================= Elements ================================= */
+    Elements:
+    [
+        /* -------------------------- [[ ImpersonationToken ]] -------------------- */
+        {
+            Type: "StringFormElement",
+            Property: "ImpersonationToken",
+            AutoConfigureHtmlEditor: true,
+        },
+        /* -------------------------- [[ FirstName ]] ----------------------------- */
+        {
+            Type: "StringFormElement",
+            Property: "FirstName",
+            AutoConfigureHtmlEditor: true,
+        },
+        /* -------------------------- [[ LastName ]] ------------------------------ */
+        {
+            Type: "StringFormElement",
+            Property: "LastName",
+            AutoConfigureHtmlEditor: true,
+        },
+        /* -------------------------- [[ Email ]] --------------------------------- */
+        {
+            Type: "StringFormElement",
+            Property: "Email",
+            AutoConfigureHtmlEditor: true,
+        },
+        /* -------------------------- [[ Password ]] ------------------------------ */
+        {
+            Type: "StringFormElement",
+            Property: "Password",
+            AutoConfigureHtmlEditor: true,
+        },
+        /* -------------------------- [[ IsDeactivated ]] ------------------------- */
+        {
+            Type: "BooleanFormElement",
+            Property: "IsDeactivated",
+        },
+        /* -------------------------- [[ Salt ]] ---------------------------------- */
+        {
+            Type: "StringFormElement",
+            Property: "Salt",
+            AutoConfigureHtmlEditor: true,
+        },
+    ],
+    
+    /* ================================= Buttons ============================================ */
+    Buttons:
+    [
+        /* ----------------------  << Add Administrator >>  --------------------------------- */
+        {
+            Text: "Add Administrator",
+            CausesValidation: false,
+            Icon: "fa-plus",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Add master detail row........................ */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Add master detail row",
+                        Action: "Add master detail row",
+                        WarnOnAnyException: false,
+                        WarnOnValidationException: false,
+                    },
+                ],
+            },
+        },
+    ],
+}

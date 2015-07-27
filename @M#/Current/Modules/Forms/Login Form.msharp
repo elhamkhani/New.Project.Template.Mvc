@@ -1,0 +1,127 @@
+var v105 =
+{
+    Name: "Login Form",
+    Entity: "User",
+    ModuleHeaderText: "Please Login",
+    SupportsAdd: false,
+    SupportsEdit: false,
+    
+    /* ================================= Elements ================================= */
+    Elements:
+    [
+        /* -------------------------- [[ Email ]] --------------------------------- */
+        {
+            Type: "StringFormElement",
+            Property: "Email",
+            AutoConfigureHtmlEditor: true,
+            WatermarkText: "Your email",
+        },
+        /* -------------------------- [[ Password ]] ------------------------------ */
+        {
+            Type: "StringFormElement",
+            Property: "Password",
+            AutoConfigureHtmlEditor: true,
+            IsMandatory: true,
+            WatermarkText: "Your password",
+        },
+    ],
+    
+    /* ================================= Buttons ============================================ */
+    Buttons:
+    [
+        /* ----------------------  << Forgot password? >>  ---------------------------------- */
+        {
+            Text: "Forgot password?",
+            CausesValidation: true,
+            Icon: "fa-key",
+            Style: "Link",
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Go Forgot password........................... */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go Forgot password",
+                        Page: "Login > Forgot password",
+                        Target: "Same window",
+                    },
+                ],
+            },
+        },
+        
+        /* ----------------------  << Login >>  --------------------------------------------- */
+        {
+            Text: "Login",
+            CausesValidation: true,
+            Workflow:
+            {
+                Activities:
+                [
+                    /* Find the user................................ */
+                    {
+                        Type: "GenericActivity",
+                        Description: "Find the user",
+                        Code: "var user = Domain.User.FindByEmail(info.Email);",
+                    },
+                    
+                    /* Warning for invalid username................. */
+                    {
+                        Type: "NotificationActivity",
+                        Text: "Invalid username and/or password. Please try again.",
+                        Description: "Warning for invalid username / password.",
+                        ExitWorkflow: true,
+                        UseMessageBox: true,
+                        Criteria:
+                        {
+                            Rule: "user == null || user.Password != info.Password.CreateHash(user.Salt)",
+                        },
+                    },
+                    
+                    /* Warning for deactivated...................... */
+                    {
+                        Type: "NotificationActivity",
+                        Text: "Your account is currently deactivated. It might be due to security concerns on your account. Please contact the system administrator to resolve this issue. We apologise for the inconvenience.",
+                        Description: "Warning for deactivated.",
+                        ExitWorkflow: true,
+                        UseMessageBox: true,
+                        Criteria:
+                        {
+                            Rule: "user.IsDeactivated",
+                        },
+                    },
+                    
+                    /* Log On....................................... */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Log On",
+                        Action: "Log On",
+                        WarnOnAnyException: false,
+                        WarnOnValidationException: false,
+                    },
+                    
+                    /* Return to previous page...................... */
+                    {
+                        Type: "CommonActivity",
+                        Description: "Return to previous page",
+                        Action: "Return to previous page",
+                        WarnOnAnyException: false,
+                        WarnOnValidationException: false,
+                        Criteria:
+                        {
+                            Rule: "Url.ReturnUrl().HasValue()",
+                        },
+                    },
+                    
+                    /* Go Dispatch.................................. */
+                    {
+                        Type: "NavigateActivity",
+                        Description: "Go Dispatch",
+                        Page: "Login > Dispatch",
+                        Target: "Same window",
+                    },
+                ],
+            },
+        },
+    ],
+}

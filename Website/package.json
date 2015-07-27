@@ -1,0 +1,18 @@
+﻿{
+    "name": "project",
+    "version": "1.0.0",
+
+    "devDependencies": {
+        "gulp": "^3.8.11",
+        "gulp-changed": "^1.2.1",
+        "gulp-debug": "^2.0.1",
+        "gulp-less": "^3.0.2",
+        "gulp-minify-css": "^1.0.0",
+        "gulp-sourcemaps": "^1.5.1",
+        "gulp-uglifyjs": "^0.6.1",
+        "merge2": "^0.3.2",
+        "gulp-xmlpoke": "^0.2.0",
+        "gulp-clean": "^0.3.1",
+        "gulp-rename": "^1.2.2"
+    }
+}

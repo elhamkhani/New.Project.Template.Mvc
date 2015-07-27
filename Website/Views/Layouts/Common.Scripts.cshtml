@@ -1,0 +1,18 @@
+﻿@{  Layout = null; }
+
+@{
+   var data = Server.MapPath("~/ScriptReferences.json").AsFile().ReadAllText();
+   var ScriptReferences = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(data);
+}
+
+@if (Context.IsDebuggingEnabled)
+{
+   foreach (var file in ScriptReferences)
+   {
+      <script src='@file'></script>
+   }
+}
+else
+{
+   <script src='~/public/js/app-min.js'></script>
+}

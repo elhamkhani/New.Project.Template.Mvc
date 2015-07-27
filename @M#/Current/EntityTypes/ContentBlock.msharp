@@ -1,0 +1,48 @@
+var v105 =
+{
+    Name: "Content block",
+    ClassName: "ContentBlock",
+    TableName: "ContentBlocks",
+    PluralName: "Content blocks",
+    Namespace: "02 CMS",
+    DatabaseMode: "Managed",
+    DefaultProperty: "Key",
+    GenerateInstanceAccessors: true,
+    LogEvents: true,
+    Schema: "dbo",
+    
+    Properties:
+    [
+        /* --------------------------- Name ---------------------------------------------------------------- */
+        {
+            Type: "StringProperty",
+            Name: "Name",
+            Title: "Name",
+            Capacity: 200,
+            IsMandatory: true,
+            TrimValues: true,
+        },
+        
+        /* --------------------------- Key ----------------------------------------------------------------- */
+        {
+            Type: "StringProperty",
+            Name: "Key",
+            Title: "Key",
+            Capacity: 200,
+            IsMandatory: true,
+            IsUnique: true,
+            TrimValues: true,
+        },
+        
+        /* --------------------------- Content ------------------------------------------------------------- */
+        {
+            Type: "StringProperty",
+            Name: "Content",
+            Title: "Content",
+            IsMandatory: true,
+            NumberOfLines: 5,
+            TrimValues: true,
+        },
+        
+    ],
+}

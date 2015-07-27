@@ -1,0 +1,58 @@
+var v105 =
+{
+    Name: "Login",
+    MasterPage: "Front end",
+    
+    /* ================================= Modules ============================================ */
+    Modules:
+    [
+        {
+            Module: "Login Form",
+        },
+        {
+            Module: "Social media login",
+        },
+    ],
+    
+    StartupWorkflows:
+    {
+        Do:
+        [
+            
+            /* Go Dispatch.................................. */
+            {
+                Type: "NavigateActivity",
+                Description: "Go Dispatch",
+                Page: "Login > Dispatch",
+                Target: "Same window",
+                MustRunOnServer: true,
+                Criteria:
+                {
+                    Rule: "User.IsAuthenticated()",
+                },
+            },
+            
+            /* Go /login {send ReturlUrl}................... */
+            {
+                Type: "NavigateActivity",
+                Description: "Go /login {send ReturlUrl}",
+                Target: "Same window",
+                MustRunOnServer: true,
+                Url: "/login",
+                Criteria:
+                {
+                    Rule: "Url.ReturnUrl().IsEmpty()",
+                },
+                
+                Parameters:
+                [
+                    {
+                        Key: "ReturnUrl",
+                        Type: "Static",
+                        Value: "/login",
+                    },
+                ],
+            },
+        ],
+    },
+}
